@@ -1,11 +1,59 @@
 /*
     C++
-    This class used to represent integers.
     这个类用来表示整数。
 */
+#include<string>
+using namespace std;
 class integer
 {
     private:
-        char sign,*value;
-        int len;
+        int sign,len;
+        string value;
+    public:
+    	integer();
+        /*
+            默认构造0
+        */
+    	integer(integer& number);
+        /*
+            根据integer类别的对象(number)构造
+        */
+    	integer(string number);
+        /*
+            根据一个字符串(number)构造
+        */
 };
+integer::integer()
+{
+	sign='0';
+	value="0";
+	len=0;
+}
+integer::integer(integer& number)
+{
+	sign=number.sign;
+	value=number.value;
+	len=number.len;
+}
+integer::integer(string number)
+{
+	if(number[0]=='0')
+	{
+		sign=0;
+		value="0";
+		len=0;
+		return;
+	}
+	if(number[0]=='-')sign=-1;
+	else sign=1;
+	if(number[0]=='+' or number[0]=='-')
+	{
+		len=number.length()-1;
+		value=number.substr(1,len);
+	}
+	else
+	{
+		len=number.length();
+		value=number.substr(0,len);
+	}
+}
