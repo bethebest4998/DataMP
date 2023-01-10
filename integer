@@ -1,1 +1,6 @@
-
+class integer
+{
+    private:
+        char sign,*value;
+        int len;
+};
