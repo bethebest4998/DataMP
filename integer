@@ -1,3 +1,8 @@
+/*
+    C++
+    This class used to represent integers.
+    这个类用来表示整数。
+*/
 class integer
 {
     private:
