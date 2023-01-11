@@ -16,16 +16,28 @@ class integer
         */
     	integer(integer& number);
         /*
-            根据integer类别的对象(number)构造
+            根据integer类其它的对象(number)构造
         */
     	integer(string number);
         /*
             根据一个字符串(number)构造
         */
+		~integer();
+		/*
+			析构函数
+		*/
+    	string signed_number();
+		/*
+			返回根据自身的值返回字符串(正数带正号)
+		*/
+    	string unsigned_number();
+		/*
+			返回根据自身的值返回字符串(正数不带正号)
+		*/
 };
 integer::integer()
 {
-	sign='0';
+	sign=0;
 	value="0";
 	len=0;
 }
@@ -56,4 +68,20 @@ integer::integer(string number)
 		len=number.length();
 		value=number.substr(0,len);
 	}
+}
+integer::~integer()
+{
+	return;
+}
+string integer::signed_number()
+{
+	if(sign==0)return "0";
+	if(sign==1)return ("+"+value);
+	if(sign==-1)return ("-"+value);
+}
+string integer::unsigned_number()
+{
+	if(sign==0)return "0";
+	if(sign==1)return value;
+	if(sign==-1)return ("-"+value);
 }
