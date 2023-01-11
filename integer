@@ -22,87 +22,87 @@ class integer
         /*
             根据一个字符串(number)构造
         */
-		~integer();
-		/*
-			析构函数
-		*/
-    	string signed_number();
-		/*
-			返回根据自身的值返回字符串(正数带正号)
-		*/
-    	string unsigned_number();
-		/*
-			返回根据自身的值返回字符串(正数不带正号)
-		*/
-		integer opp();
-		/*
-			返回自身的相反数
-		*/
-    	integer abs();
-		/*
-			返回自身的绝对值
-		*/
+        ~integer();
+        /*
+            析构函数
+        */
+        string signed_number();
+        /*
+            返回根据自身的值返回字符串(正数带正号)
+        */
+        string unsigned_number();
+        /*
+            返回根据自身的值返回字符串(正数不带正号)
+        */
+        integer opp();
+        /*
+            返回自身的相反数
+        */
+        integer abs();
+        /*
+            返回自身的绝对值
+        */
 };
 integer::integer()
 {
-	sign=0;
-	value="0";
-	len=0;
+    sign=0;
+    value="0";
+    len=0;
 }
 integer::integer(integer& number)
 {
-	sign=number.sign;
-	value=number.value;
-	len=number.len;
+    sign=number.sign;
+    value=number.value;
+    len=number.len;
 }
 integer::integer(string number)
 {
-	if(number[0]=='0')
-	{
-		sign=0;
-		value="0";
-		len=0;
-		return;
-	}
-	if(number[0]=='-')sign=-1;
-	else sign=1;
-	if(number[0]=='+' or number[0]=='-')
-	{
-		len=number.length()-1;
-		value=number.substr(1,len);
-	}
-	else
-	{
-		len=number.length();
-		value=number.substr(0,len);
-	}
+    if(number[0]=='0')
+    {
+        sign=0;
+        value="0";
+        len=0;
+        return;
+    }
+    if(number[0]=='-')sign=-1;
+    else sign=1;
+    if(number[0]=='+' or number[0]=='-')
+    {
+        len=number.length()-1;
+        value=number.substr(1,len);
+    }
+    else
+    {
+        len=number.length();
+        value=number.substr(0,len);
+    }
 }
 integer::~integer()
 {
-	return;
+    return;
 }
 string integer::signed_number()
 {
-	if(sign==0)return "0";
-	if(sign==1)return ("+"+value);
-	if(sign==-1)return ("-"+value);
+    if(sign==0)return "0";
+    if(sign==1)return ("+"+value);
+    if(sign==-1)return ("-"+value);
 }
 string integer::unsigned_number()
 {
-	if(sign==0)return "0";
-	if(sign==1)return value;
-	if(sign==-1)return ("-"+value);
+    if(sign==0)return "0";
+    if(sign==1)return value;
+    if(sign==-1)return ("-"+value);
 }
 integer integer::opp()
 {
-	integer number(*this);
-	number.sign*=-1;
-	return number;
+    integer number(*this);
+    number.sign*=-1;
+    return number;
 }
 integer integer::abs()
 {
-	if(sign!=-1)return *this;
-	integer number(*this);
-	number.sign*=-1;
-	return number;
+    if(sign!=-1)return *this;
+    integer number(*this);
+    number.sign*=-1;
+    return number;
 }
