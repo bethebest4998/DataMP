@@ -34,6 +34,14 @@ class integer
 		/*
 			返回根据自身的值返回字符串(正数不带正号)
 		*/
+		integer opp();
+		/*
+			返回自身的相反数
+		*/
+    	integer abs();
+		/*
+			返回自身的绝对值
+		*/
 };
 integer::integer()
 {
@@ -84,4 +92,17 @@ string integer::unsigned_number()
 	if(sign==0)return "0";
 	if(sign==1)return value;
 	if(sign==-1)return ("-"+value);
+}
+integer integer::opp()
+{
+	integer number(*this);
+	number.sign*=-1;
+	return number;
+}
+integer integer::abs()
+{
+	if(sign!=-1)return *this;
+	integer number(*this);
+	number.sign*=-1;
+	return number;
 }
