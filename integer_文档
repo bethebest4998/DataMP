@@ -1,0 +1,11 @@
+这是一份关于integer类的文档。
+integer类使用C++进行编写，它将用来表示整数。
+构造、析构函数：
+    integer():
+        函数作用：
+            将自身构造为0.
+    integer(string number):
+        参数限制：
+            number:一个string的对象，它以‘+’、‘-’、数字开头，其它位置均是数字，并且开头没有多余的0.
+        函数作用：
+            根据number的值，将自身构造成一个与number表示同一个数字的integer对象.
