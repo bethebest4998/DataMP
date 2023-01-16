@@ -1,7 +1,3 @@
-/*
-    C++
-    这个类用来表示整数。
-*/
 #include<string>
 using namespace std;
 class integer
@@ -11,98 +7,140 @@ class integer
         string value;
     public:
     	integer();
-        /*
-            默认构造0
-        */
     	integer(integer& number);
-        /*
-            根据integer类其它的对象(number)构造
-        */
     	integer(string number);
-        /*
-            根据一个字符串(number)构造
-        */
-        ~integer();
-        /*
-            析构函数
-        */
-        string signed_number();
-        /*
-            返回根据自身的值返回字符串(正数带正号)
-        */
-        string unsigned_number();
-        /*
-            返回根据自身的值返回字符串(正数不带正号)
-        */
-        integer opp();
-        /*
-            返回自身的相反数
-        */
-        integer abs();
-        /*
-            返回自身的绝对值
-        */
+    	~integer();
+    	string signed_number();
+    	string unsigned_number();
+    	integer operator-();
+    	integer abs();
+    	bool operator<(integer number);
+    	bool operator>(integer number);
+    	bool operator==(integer number);
+    	bool operator<=(integer number);
+    	bool operator>=(integer number);
+    	bool operator!=(integer number);
+    	integer& operator=(string number);
+    	integer& operator=(integer& number);
 };
 integer::integer()
 {
-    sign=0;
-    value="0";
-    len=0;
+	sign=0;
+	value="0";
+	len=0;
 }
 integer::integer(integer& number)
 {
-    sign=number.sign;
-    value=number.value;
-    len=number.len;
+	sign=number.sign;
+	value=number.value;
+	len=number.len;
 }
 integer::integer(string number)
 {
-    if(number[0]=='0')
-    {
-        sign=0;
-        value="0";
-        len=0;
-        return;
-    }
-    if(number[0]=='-')sign=-1;
-    else sign=1;
-    if(number[0]=='+' or number[0]=='-')
-    {
-        len=number.length()-1;
-        value=number.substr(1,len);
-    }
-    else
-    {
-        len=number.length();
-        value=number.substr(0,len);
-    }
+	if(number[0]=='0')
+	{
+		sign=0;
+		value="0";
+		len=0;
+		return;
+	}
+	if(number[0]=='-')sign=-1;
+	else sign=1;
+	if(number[0]=='+' or number[0]=='-')
+	{
+		len=number.length()-1;
+		value=number.substr(1,len);
+	}
+	else
+	{
+		len=number.length();
+		value=number.substr(0,len);
+	}
 }
 integer::~integer()
 {
-    return;
+	return;
 }
 string integer::signed_number()
 {
-    if(sign==0)return "0";
-    if(sign==1)return ("+"+value);
-    if(sign==-1)return ("-"+value);
+	if(sign==0)return "0";
+	if(sign==1)return ("+"+value);
+	if(sign==-1)return ("-"+value);
 }
 string integer::unsigned_number()
 {
-    if(sign==0)return "0";
-    if(sign==1)return value;
-    if(sign==-1)return ("-"+value);
+	if(sign==0)return "0";
+	if(sign==1)return value;
+	if(sign==-1)return ("-"+value);
 }
-integer integer::opp()
+integer integer::operator-()
 {
-    integer number(*this);
-    number.sign*=-1;
-    return number;
+	integer number(*this);
+	number.sign*=-1;
+	return number;
 }
 integer integer::abs()
 {
-    if(sign!=-1)return *this;
-    integer number(*this);
-    number.sign*=-1;
-    return number;
+	if(sign!=-1)return *this;
+	integer number(*this);
+	number.sign*=-1;
+	return number;
+}
+bool integer::operator<(integer number)
+{
+	if(sign!=number.sign)return sign<number.sign;
+	if(len!=number.len)return len*sign<number.len*number.sign;
+	return value<number.value;
+}
+bool integer::operator>(integer number)
+{
+	if(sign!=number.sign)return sign>number.sign;
+	if(len!=number.len)return len*sign>number.len*number.sign;
+	return value>number.value;
+}
+bool integer::operator==(integer number)
+{
+	return (sign==number.sign and value==number.value);
+}
+bool integer::operator<=(integer number)
+{
+	return !((*this)>number);
+}
+bool integer::operator>=(integer number)
+{
+	return !((*this)<number);
+}
+bool integer::operator!=(integer number)
+{
+	return !((*this)==number);
+}
+integer& integer::operator=(string number)
+{
+	if(number[0]=='0')
+	{
+		sign=0;
+		value="0";
+		len=0;
+		return *this;
+	}
+	if(number[0]=='-')sign=-1;
+	else sign=1;
+	if(number[0]=='+' or number[0]=='-')
+	{
+		len=number.length()-1;
+		value=number.substr(1,len);
+	}
+	else
+	{
+		len=number.length();
+		value=number.substr(0,len);
+	}
+	return *this;
+}
+integer& integer::operator=(integer& number)
+{
+	sign=number.sign;
+	value=number.value;
+	len=number.len;
+	return *this;
 }
