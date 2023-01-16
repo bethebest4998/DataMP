@@ -2,26 +2,26 @@
 using namespace std;
 class integer
 {
-    private:
-        int sign,len;
-        string value;
-    public:
-    	integer();
-    	integer(integer& number);
-    	integer(string number);
-    	~integer();
-    	string signed_number();
-    	string unsigned_number();
-    	integer operator-();
-    	integer abs();
-    	bool operator<(integer number);
-    	bool operator>(integer number);
-    	bool operator==(integer number);
-    	bool operator<=(integer number);
-    	bool operator>=(integer number);
-    	bool operator!=(integer number);
-    	integer& operator=(string number);
-    	integer& operator=(integer& number);
+        private:
+                int sign,len;
+                string value;
+        public:
+    	        integer();
+    	        integer(integer& number);
+    	        integer(string number);
+    	        ~integer();
+    	        string signed_number();
+    	        string unsigned_number();
+    	        integer operator-();
+    	        integer abs();
+    	        bool operator<(integer number);
+    	        bool operator>(integer number);
+    	        bool operator==(integer number);
+    	        bool operator<=(integer number);
+    	        bool operator>=(integer number);
+    	        bool operator!=(integer number);
+    	        integer& operator=(string number);
+    	        integer& operator=(integer& number);
 };
 integer::integer()
 {
