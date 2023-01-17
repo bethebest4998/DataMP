@@ -20,6 +20,12 @@ class integer
     	        bool operator<=(integer number);
     	        bool operator>=(integer number);
     	        bool operator!=(integer number);
+		bool operator<(string number);
+    		bool operator>(string number);
+    		bool operator==(string number);
+    		bool operator<=(string number);
+    		bool operator>=(string number);
+    		bool operator!=(string number);
     	        integer& operator=(string number);
     	        integer& operator=(integer& number);
 };
@@ -113,6 +119,36 @@ bool integer::operator>=(integer number)
 bool integer::operator!=(integer number)
 {
 	return !((*this)==number);
+}
+bool integer::operator<(string number)
+{
+	integer number1(number);
+	return (*this)<number1;
+}
+bool integer::operator>(string number)
+{
+	integer number1(number);
+	return (*this)>number1;
+}
+bool integer::operator==(string number)
+{
+	integer number1(number);
+	return (*this)==number1;
+}
+bool integer::operator<=(string number)
+{
+	integer number1(number);
+	return (*this)<=number1;
+}
+bool integer::operator>=(string number)
+{
+	integer number1(number);
+	return (*this)>=number1;
+}
+bool integer::operator!=(string number)
+{
+	integer number1(number);
+	return (*this)!=number1;
 }
 integer& integer::operator=(string number)
 {
