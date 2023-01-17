@@ -40,6 +40,24 @@ integer类使用C++进行编写,它将用来表示整数.
     bool operator!=(integer number):
         函数作用:
             如果自身不等于number,返回true,否则返回false.
+    bool operator<(string number):
+        函数作用:
+            如果自身小于number,返回true,否则返回false.
+    bool operator>(string number):
+        函数作用:
+            如果自身大于number,返回true,否则返回false.
+    bool operator==(string number):
+        函数作用:
+            如果自身等于number,返回true,否则返回false.
+    bool operator<=(string number):
+        函数作用:
+            如果自身小于等于number,返回true,否则返回false.
+    bool operator>=(string number):
+        函数作用:
+            如果自身大于等于number,返回true,否则返回false.
+    bool operator!=(string number):
+        函数作用:
+            如果自身不等于number,返回true,否则返回false.
  一元运算函数:
     integer operator-():
         函数作用:
