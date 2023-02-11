@@ -1,1 +1,105 @@
-
+#include<string>
+class integer
+{
+	private:
+		int sign,len;
+		string number;
+	public:
+		integer();
+		integer(integer& number0);
+		integer(string number0);
+		integer(int number0);
+		
+		string return_signed();
+		string return_unsigned();
+		int return_sign(){return sign;}
+		int length(){return len;}
+};
+integer::integer()
+{
+	number="0";
+	sign=0;
+	len=0;
+}
+integer::integer(integer& number0)
+{
+	number=number0.number;
+	sign=number0.sign;
+	len=number0.sign;
+}
+integer::integer(string number0)
+{
+	if(number0=="0")
+	{
+		number="0";
+		sign=0;
+		len=0;
+		return;
+	}
+	if(number0[0]=='-')
+	{
+		sign=-1;
+		len=number0.length()-1;
+		number=number0.substr(1,len);
+	}
+	else if(number0[0]=='+')
+	{
+		sign=1;
+		len=number0.length()-1;
+		number=number0.substr(1,len);
+	}
+	else
+	{
+		sign=1;
+		len=number0.length();
+		number=number0;
+	}
+}
+integer::integer(int number0)
+{
+	if(number0==0)
+	{
+		sign=0;
+		len=0;
+		number="0";
+	}
+	else if(number0>0)
+	{
+		sign=1;
+		len=0;
+		int number0_=number0;
+		char c;
+		while(number0_!=0)
+		{
+			c=number0_%10+'0';
+			number0_/=10;
+			number=c+number;
+			++len;
+		}
+	}
+	else
+	{
+		sign=-1;
+		len=0;
+		int number0_=-number0;
+		char c;
+		while(number0_!=0)
+		{
+			c=number0_%10+'0';
+			number0_/=10;
+			number=c+number;
+			++len;
+		}
+	}
+}
+string integer::return_signed()
+{
+	if(sign==0)return number;
+	if(sign==-1)return "-"+number;
+	if(sign==1)return "+"+number;
+}
+string integer::return_unsigned()
+{
+	if(sign!=-1)return number;
+	return "-"+number;
+}
